@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :songs, only: [:new, :create]
   end
   
-  resources :songs, only: [:show]
+  resources :songs
   # Example resource route with options:
   #   resources :products do
   #     member do
