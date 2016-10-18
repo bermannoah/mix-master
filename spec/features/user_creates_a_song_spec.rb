@@ -22,7 +22,6 @@ RSpec.feature "User submits a new song" do
       click_on "New song"
       
       click_on "Create Song"
-      save_and_open_page
       expect(page).to have_content "Title can't be blank"
     end
   end
