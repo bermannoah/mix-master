@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     resources :songs
   end
   
-  resources :songs 
+  resources :songs  do
+    collection do
+      get :all
+    end
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do
