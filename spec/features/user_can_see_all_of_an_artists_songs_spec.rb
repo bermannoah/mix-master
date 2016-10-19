@@ -2,22 +2,13 @@ require 'rails_helper'
 
 RSpec.feature "User views all of an artists songs" do
   scenario "they visit an artists page" do
-    pending
-    artist = create(:artist)
-    song = create(:song)
+    artist = create(:artist_with_songs)
     
-    visit artist_path(artist)
-    click_on "New song"
-    fill_in "song_title", with: song
-    click_on "Create Song"
-    click_on "New song"
-    fill_in "song_title", with: song_2
-    click_on "Create Song"
-    
-    expect(page).to have_content "Bury It"
-    expect(page).to have_content "The Mother We Share"
+    visit artist_songs_path(artist)
+    click_on "I Would Walk 7 Miles"
 
-
+    expect(page).to have_content "I Would Walk 7 Miles"
+    expect(page).to have_content "Edit"
 
   end
 end
