@@ -7,9 +7,7 @@ end
 
 FactoryGirl.define do
   factory :song do
-    sequence :title 
+    sequence(:title) { |a, b, c| "I Would Walk #{a}#{b}#{c} Miles"}
     artist nil
   end
 end
-
-

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "User views all of an artists songs" do
   scenario "they visit an artists page" do
+    pending
     artist = create(:artist)
     song = create(:song)
-    song_2 = create(:song_2)
     
     visit artist_path(artist)
     click_on "New song"
