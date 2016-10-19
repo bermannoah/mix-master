@@ -3,13 +3,10 @@ require 'rails_helper'
 RSpec.feature "User edits a song" do
   scenario "they have an edit button" do
     artist = create(:artist)
-    song_name = create(:song)
 
     visit artist_path(artist)
-    click_on "New song"
-    fill_in "song_title", with: song_name.title
-    click_on "Create Song"
-    expect(page).to have_content "I Would Walk"
+
+    expect(page).to have_content "Edit"
   end
   
   scenario "they can access the edit page" do
@@ -20,6 +17,7 @@ RSpec.feature "User edits a song" do
     click_on "New song"
     fill_in "song_title", with: song_name.title
     click_on "Create Song"
+    save_and_open_page
     click_on "Edit"
     expect(page).to have_content "I Would Walk"
   end

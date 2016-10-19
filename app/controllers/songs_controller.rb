@@ -2,7 +2,7 @@ class SongsController < ApplicationController
   
   def index
     if params[:artist_id]
-      @songs = Song.where(:artist_id => params[:artist_id])
+      @songs = Song.find(params[:artist_id])
     else
       @songs = Song.all
     end
@@ -25,10 +25,10 @@ class SongsController < ApplicationController
   
   def show
     if params[:artist_id]
-      @song = Song.where(:artist_id => params[:artist_id])
+      @song = Song.find(params[:artist_id])
       @artist = Artist.find(params[:artist_id])
     else
-      @song = Song.find(params[:id])
+      @song = Song.find_by(params[:id])
     end  
   end
   
