@@ -1,14 +1,13 @@
 class SongsController < ApplicationController
   
   def index
-    @artist = Artist.find(params[:artist_id])
-    @songs = @artist.songs
+    if params[:artist_id]
+      @songs = Song.where(:artist_id => params[:artist_id])
+    else
+      @songs = Song.all
+    end
   end
-  
-  def all
-    @songs = Song.all
-  end
-  
+    
   def new
     @artist = Artist.find(params[:artist_id])
     @song = @artist.songs.new
@@ -25,7 +24,12 @@ class SongsController < ApplicationController
   end
   
   def show
-    @song = Song.find(params[:id])
+    if params[:artist_id]
+      @song = Song.where(:artist_id => params[:artist_id])
+      @artist = Artist.find(params[:artist_id])
+    else
+      @song = Song.find(params[:id])
+    end  
   end
   
   def edit
@@ -39,6 +43,13 @@ class SongsController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def destroy
+    @artist = Artist.find(params[:artist_id])
+    @song = Song.find(params[:id])
+    @song.delete
+    redirect_to artist_path(@artist)
   end
   
   private
