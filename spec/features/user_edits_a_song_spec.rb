@@ -38,6 +38,8 @@ RSpec.feature "User edits a song" do
     fill_in "song_title", with: new_song_name
     click_on "Update Song"
     expect(page).to have_content "Bury It"
+    click_on "Bob Marley"
+    expect(page).to have_content "Bob Marley"
   end
   
 end

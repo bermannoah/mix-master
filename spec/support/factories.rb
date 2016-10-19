@@ -7,7 +7,9 @@ end
 
 FactoryGirl.define do
   factory :song do
-    title "The Mother We Share"
+    sequence :title 
     artist nil
   end
 end
+
+
