@@ -7,7 +7,7 @@ RSpec.feature "User creates a playlist" do
     playlist_name = "My Jams"
     
     visit playlists_path
-    click on "New playlist"
+    click_on "New playlist"
     fill_in "playlist_name", with: playlist_name
     check("song-#{song_one.id}")
     check("song-#{song_three.id}")
@@ -20,7 +20,7 @@ RSpec.feature "User creates a playlist" do
     end
     
     within("li:last") do
-      expect(pagE).to have_link song_three.title, href: song_path(song_three)
+      expect(page).to have_link song_three.title, href: song_path(song_three)
     end
   end
 end
